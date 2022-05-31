@@ -1,0 +1,86 @@
+<body >
+    <div ><h1>{{title}}</h1></div>
+    
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            /*border-collapse: collapse;*/
+            border-block-end-color: black;
+            border: black;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #89afe7;
+        }
+    </style>
+    <div >
+        <table class="table" style="background-color: #a6b3c7;">
+            <thead>
+                <tr>
+                    <th>StudentId</th>
+                    <th>StudentName</th>
+                    <th>StudentAge</th>
+                    <th>Operation</th>
+
+                </tr>
+            </thead>
+            <tbody style="text-emphasis-color: black;">
+                <tr *ngFor="let pro of student;let i=index;">
+
+                    <!-- <td>{{ pro.studentId }}</td>
+                <td>{{ pro.studentName }}</td>
+                <td>{{ pro.studentAge }}</td>-->
+                    <td>
+                        <input type="text" style="border-collapse: collapse;" [(ngModel)]="pro.studentId"
+                            [disabled]="!pro.isEditable">
+                    </td>
+                    <td>
+                        <input type="text" [(ngModel)]="pro.studentName" [disabled]="!pro.isEditable">
+                    </td>
+                    <td>
+                        <input type="text" [(ngModel)]="pro.studentAge" [disabled]="!pro.isEditable">
+                    </td>
+                    <td>
+                        <button class='heading' (click)='Delete(i)'>Delete</button>
+                        <button (click)="pro.isEditable=!pro.isEditable" *ngIf="!pro.isEditable">Edit</button>
+                        <button *ngIf="pro.isEditable" (click)="pro.isEditable=!pro.isEditable">Save</button>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <br>
+        <div class="panel-footer">
+            <div class="form-group">
+                <input type="text" id="Value1" name="Value1" required minlength="3" maxlength="15" style="width: 33%;"
+                    placeholder="Enter Student Id" class="form-control" [(ngModel)]="id">
+                <input type="text" name="Value2" required minlength="3" maxlength="15" style="width: 33%;"
+                    placeholder="Enter Student Name" class="form-control" [(ngModel)]="name">
+                <input type="text" id="Value3" name="Value3" required minlength="3" maxlength="15" style="width: 33%;"
+                    placeholder="Enter Student Age" class="form-control" [(ngModel)]="age">
+                <br>
+
+                <button class="btn btn-default" (click)='Add()'>Add</button>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+
+<!--ng-init="onClick1 = false"   <p *ngIf="onClick1"> -->
